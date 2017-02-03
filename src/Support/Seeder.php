@@ -3,7 +3,6 @@
 namespace Soda\Navigation\Support;
 
 use Soda\Cms\Models\Role;
-use Soda\Cms\Models\User;
 use Soda\Cms\Models\Permission;
 use Illuminate\Database\Seeder as BaseSeeder;
 
@@ -24,7 +23,7 @@ class Seeder extends BaseSeeder
 
         $adminRole = Role::where('name', 'admin')->first();
 
-        if($adminRole) {
+        if ($adminRole) {
             $adminRole->attachPermission($permissionManageNavigation);
         }
     }

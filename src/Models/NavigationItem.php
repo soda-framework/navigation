@@ -2,8 +2,6 @@
 
 namespace Soda\Navigation\Models;
 
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Database\Eloquent\Model;
 use Soda\Cms\Models\Traits\OptionallyInApplicationTrait;
 
