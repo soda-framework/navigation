@@ -1,0 +1,27 @@
+{
+  "name": "soda-framework/navigation",
+  "license": "MIT",
+  "description": "Soda Framework: Navigation",
+  "keywords": [
+    "CMS",
+    "Soda",
+    "Framework",
+    "Navigation",
+    "Laravel"
+  ],
+  "authors": [
+    {
+      "name": "Ryan Brereton-Canham",
+      "email": "ryzaar@hotmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.5.9",
+    "soda-framework/cms": "^0.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "Soda\\Navigation\\": "src/"
+    }
+  }
+}
