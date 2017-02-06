@@ -37,11 +37,12 @@ class SodaNavigationServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__.'/../views', 'soda-navigation');
         $this->loadMigrationsFrom(__DIR__.'/../migrations');
 
-        \SodaMenu::menu('navigation', function ($menu) {
-            $menu['Content']->addItem('Navigation', [
+        $this->app['soda.menu']->menu('sidebar', function ($menu) {
+            $menu->addItem('Navigation', [
                 'url'         => route('soda.navigation.index'),
                 'label'       => 'Navigation',
                 'isCurrent'   => soda_request_is('navigation*'),
+                'icon'        => 'fa fa-compass',
                 'permissions' => 'manage-navigation',
             ]);
         });

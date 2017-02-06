@@ -15,7 +15,7 @@ class Seeder extends BaseSeeder
      */
     public function run()
     {
-        $permissionManageNavigation = Permission::create([
+        $permissionManageNavigation = Permission::firstOrCreate([
             'name'         => 'manage-navigation',
             'display_name' => 'Manage Navigation',
             'description'  => 'View, edit and delete navigation items.',
@@ -25,6 +25,12 @@ class Seeder extends BaseSeeder
 
         if ($adminRole) {
             $adminRole->attachPermission($permissionManageNavigation);
+        }
+
+        $developerRole = Role::where('name', 'developer')->first();
+
+        if ($developerRole) {
+            $developerRole->attachPermission($permissionManageNavigation);
         }
     }
 }

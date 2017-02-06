@@ -4,15 +4,18 @@ namespace Soda\Navigation\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Soda\Navigation\Models\NavigationItem;
 
 class NavigationController extends Controller
 {
     public function index(Request $request)
     {
-        return view('soda-navigation::index');
+        $treeItems = NavigationItem::get()->toTree();
+
+        return view('soda-navigation::index', compact('treeItems'));
     }
 
-    public function create()
+    public function create($parentId = null)
     {
         return view('soda-navigation::view');
     }
@@ -32,8 +35,13 @@ class NavigationController extends Controller
         return redirect()->route('soda.navigation.index')->with('warning', 'Navigation item deleted');
     }
 
-    public function move()
+    public function move(Request $request, $id)
     {
+        $position = $request->input('position');
+        $parentId = $request->input('parent_id');
+
+        NavigationItem::find($id)->moveTo($position, $parentId != null ? $parentId : null);
+
         return response()->json(['success' => true]);
     }
 }
