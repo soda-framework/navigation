@@ -2,8 +2,8 @@
 
 namespace Soda\Navigation\Models\Traits;
 
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 use Soda\Navigation\Support\NavigationItemCollection;
 
 trait Treeable

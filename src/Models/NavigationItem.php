@@ -2,13 +2,13 @@
 
 namespace Soda\Navigation\Models;
 
+use Soda\Cms\Models\Page;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Request;
-use Soda\Cms\Models\Page;
 use Soda\Cms\Models\Traits\DraftableTrait;
-use Soda\Cms\Models\Traits\OptionallyInApplicationTrait;
-use Soda\Cms\Models\Traits\PositionableTrait;
 use Soda\Navigation\Models\Traits\Treeable;
+use Soda\Cms\Models\Traits\PositionableTrait;
+use Soda\Cms\Models\Traits\OptionallyInApplicationTrait;
 
 class NavigationItem extends Model
 {

@@ -2,10 +2,10 @@
 
 namespace Soda\Navigation\Support;
 
-use Illuminate\Database\Seeder as BaseSeeder;
+use Soda\Cms\Models\Role;
 use Soda\Cms\Models\Permission;
 
-use Soda\Cms\Models\Role;
+use Illuminate\Database\Seeder as BaseSeeder;
 
 class Seeder extends BaseSeeder
 {

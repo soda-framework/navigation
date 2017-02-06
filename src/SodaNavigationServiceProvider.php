@@ -2,11 +2,11 @@
 
 namespace Soda\Navigation;
 
-use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Route;
-use Soda\Navigation\Console\Migrate;
 use Soda\Navigation\Console\Seed;
+use Soda\Navigation\Console\Migrate;
+use Illuminate\Support\Facades\Route;
 use Soda\Navigation\Models\NavigationItem;
+use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
 class SodaNavigationServiceProvider extends ServiceProvider
 {
