@@ -7,6 +7,10 @@
     </ol>
 @stop
 
+@section('content-heading-button')
+    @include(soda_cms_view_path('partials.buttons.create'), ['url' => route('soda.navigation.create')])
+@stop
+
 @section('head.title')
     <title>Reports</title>
 @endsection

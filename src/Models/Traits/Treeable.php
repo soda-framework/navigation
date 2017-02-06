@@ -28,7 +28,7 @@ trait Treeable
      * @var bool
      */
     protected $isMoved = false;
-    
+
     /**
      * The "booting" method of the model.
      *
@@ -58,11 +58,12 @@ trait Treeable
         });
     }
 
-    public function newFromBuilder($attributes = array(), $connection = null)
+    public function newFromBuilder($attributes = [], $connection = null)
     {
         $instance = parent::newFromBuilder($attributes);
         $instance->old_parent_id = $instance->parent_id;
         $instance->old_position = $instance->position;
+
         return $instance;
     }
 
@@ -107,7 +108,7 @@ trait Treeable
      */
     public function getQualifiedParentIdColumn()
     {
-        return $this->getTable() . '.' . $this->getParentIdColumn();
+        return $this->getTable().'.'.$this->getParentIdColumn();
     }
 
     /**
@@ -151,7 +152,7 @@ trait Treeable
      */
     public function getQualifiedPositionColumn()
     {
-        return $this->getTable() . '.' . $this->getPositionColumn();
+        return $this->getTable().'.'.$this->getPositionColumn();
     }
 
     /**
@@ -188,7 +189,7 @@ trait Treeable
         $parentId = ($parentId === false ? $this->parent_id : $parentId);
 
         /**
-         * @var QueryBuilder $query
+         * @var QueryBuilder
          */
         $query = $this->where($this->getParentIdColumn(), '=', $parentId);
 
@@ -250,7 +251,7 @@ trait Treeable
      */
     public function hasChildren()
     {
-        return !!$this->countChildren();
+        return ! ! $this->countChildren();
     }
 
     /**
@@ -273,7 +274,7 @@ trait Treeable
      */
     public function appendRelation($relation, $value)
     {
-        if (!array_key_exists($relation, $this->getRelations())) {
+        if (! array_key_exists($relation, $this->getRelations())) {
             $this->setRelation($relation, new NavigationItemCollection([$value]));
         } else {
             $this->getRelation($relation)->add($value);
@@ -358,7 +359,7 @@ trait Treeable
             ->orderBy($positionColumn, 'desc')
             ->first();
 
-        return !is_null($entity) ? (int)$entity->position : null;
+        return ! is_null($entity) ? (int) $entity->position : null;
     }
 
     /**
@@ -366,7 +367,7 @@ trait Treeable
      */
     protected function clampPosition()
     {
-        if (!$this->isDirty($this->getPositionColumn())) {
+        if (! $this->isDirty($this->getPositionColumn())) {
             return;
         }
         $newPosition = max(0, min($this->position, $this->getNextAfterLastPosition()));
@@ -440,7 +441,7 @@ trait Treeable
                 if ($this->position > $this->old_position) {
                     $range = [$this->old_position, $this->position];
                     $action = 'decrement';
-                } else if ($this->position < $this->old_position) {
+                } elseif ($this->position < $this->old_position) {
                     $range = [$this->position, $this->old_position];
                     $action = 'increment';
                 }
@@ -451,7 +452,7 @@ trait Treeable
             }
         }
 
-        if (!is_array($range)) {
+        if (! is_array($range)) {
             $range = [$range, null];
         }
 

@@ -17,21 +17,40 @@ class NavigationController extends Controller
 
     public function create($parentId = null)
     {
-        return view('soda-navigation::view');
+        $navigationItem = new NavigationItem([
+            'slug_type' => 'url',
+            'parent_id' => $parentId,
+        ]);
+
+        return view('soda-navigation::view', compact('navigationItem'));
     }
 
     public function edit($id)
     {
-        return view('soda-navigation::view');
+        $navigationItem = NavigationItem::find($id);
+
+        return view('soda-navigation::view', compact('navigationItem'));
     }
 
     public function save(Request $request, $id = null)
     {
+        $navigationItem = $id ? NavigationItem::find($id) : new NavigationItem;
+
+        $navigationItem->fill($request->all());
+
+        if ($navigationItem->parent_id === '') {
+            $navigationItem->parent_id = null;
+        }
+
+        $navigationItem->save();
+
         return redirect()->route('soda.navigation.edit', $id)->with('success', 'Navigation item saved successfully');
     }
 
     public function delete($id)
     {
+        NavigationItem::destroy($id);
+
         return redirect()->route('soda.navigation.index')->with('warning', 'Navigation item deleted');
     }
 

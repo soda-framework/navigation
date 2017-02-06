@@ -1,13 +1,12 @@
 <?php
+
 namespace Soda\Navigation\Support;
 
-use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Franzose\ClosureTable\Models\Entity;
+use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 
 /**
  * Extended Collection class. Provides some useful methods.
- *
- * @package Franzose\ClosureTable\Extensions
  */
 class NavigationItemCollection extends EloquentCollection
 {
@@ -19,8 +18,8 @@ class NavigationItemCollection extends EloquentCollection
      */
     public function getChildrenOf($position)
     {
-        if (!$this->hasChildren($position)) {
-            return null;
+        if (! $this->hasChildren($position)) {
+            return;
         }
 
         $item = $this->get($position);
@@ -66,8 +65,8 @@ class NavigationItemCollection extends EloquentCollection
         $result = [];
         $tops = [];
 
-        /**
-         * @var Entity $item
+        /*
+         * @var Entity
          */
         foreach ($items as $item) {
             $result[$item->getKey()] = $item;

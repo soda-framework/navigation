@@ -26,6 +26,7 @@ class NavigationItem extends Model
     ];
 
     const SLUG_TYPE_PAGE = 'page';
+
     const SLUG_TYPE_URL = 'url';
 
     public function getUrl()

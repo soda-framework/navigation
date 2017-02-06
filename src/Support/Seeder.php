@@ -2,9 +2,10 @@
 
 namespace Soda\Navigation\Support;
 
-use Soda\Cms\Models\Role;
-use Soda\Cms\Models\Permission;
 use Illuminate\Database\Seeder as BaseSeeder;
+use Soda\Cms\Models\Permission;
+
+use Soda\Cms\Models\Role;
 
 class Seeder extends BaseSeeder
 {
@@ -16,9 +17,9 @@ class Seeder extends BaseSeeder
     public function run()
     {
         $permissionManageNavigation = Permission::firstOrCreate([
-            'name'         => 'manage-navigation',
-            'display_name' => 'Manage Navigation',
-            'description'  => 'View, edit and delete navigation items.',
+            'name'                       => 'manage-navigation',
+            'display_name'               => 'Manage Navigation',
+            'description'                => 'View, edit and delete navigation items.',
         ]);
 
         $adminRole = Role::where('name', 'admin')->first();
