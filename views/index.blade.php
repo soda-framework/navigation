@@ -12,7 +12,7 @@
 @stop
 
 @section('head.title')
-    <title>Reports</title>
+    <title>Navigation</title>
 @endsection
 
 @include(soda_cms_view_path('partials.heading'), [

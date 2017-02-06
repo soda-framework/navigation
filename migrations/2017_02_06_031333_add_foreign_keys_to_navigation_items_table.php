@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class AddForeignKeysToNavigationItemsTable extends Migration
 {
@@ -13,6 +13,7 @@ class AddForeignKeysToNavigationItemsTable extends Migration
     public function up()
     {
         Schema::table('navigation_items', function (Blueprint $table) {
+            $table->index(['status', 'application_id', 'parent_id']);
             $table->foreign('application_id', 'FK_navigation_items_applications')->references('id')->on('applications')->onUpdate('CASCADE')->onDelete('CASCADE');
             $table->foreign('parent_id', 'FK_navigation_items_navigation_items')->references('id')->on('navigation_items')->onUpdate('CASCADE')->onDelete('SET NULL');
         });

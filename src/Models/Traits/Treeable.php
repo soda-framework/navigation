@@ -199,15 +199,11 @@ trait Treeable
     /**
      * Shorthand of the children query part.
      *
-     * @param mixed $id
-     *
      * @return QueryBuilder
      */
-    protected function children($id = null)
+    public function children()
     {
-        $id = ($id ?: $this->getKey());
-
-        return $this->where($this->getParentIdColumn(), '=', $id);
+        return $this->hasMany(static::class, 'parent_id', 'id');
     }
 
     /**

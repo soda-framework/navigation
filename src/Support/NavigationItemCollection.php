@@ -70,6 +70,7 @@ class NavigationItemCollection extends EloquentCollection
          */
         foreach ($items as $item) {
             $result[$item->getKey()] = $item;
+            $item->setRelation($item->getChildrenRelationIndex(), new self([]));
         }
 
         foreach ($items as $item) {

@@ -3,6 +3,7 @@
 namespace Soda\Navigation\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Request;
 use Soda\Cms\Models\Page;
 use Soda\Cms\Models\Traits\DraftableTrait;
 use Soda\Cms\Models\Traits\OptionallyInApplicationTrait;
@@ -35,6 +36,29 @@ class NavigationItem extends Model
             case static::SLUG_TYPE_PAGE:
                 return Page::find($this->slug_value)->slug;
                 break;
+            default:
+                return $this->slug_value;
+                break;
         }
+    }
+
+    public function deepMatchesUrl()
+    {
+        if ($this->matchesUrl()) {
+            return true;
+        }
+
+        foreach ($this->children as $childNavigationItem) {
+            if ($childNavigationItem->deepMatchesUrl()) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public function matchesUrl()
+    {
+        return Request::is(ltrim($this->getUrl(), '/'));
     }
 }

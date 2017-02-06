@@ -44,7 +44,7 @@ class NavigationController extends Controller
 
         $navigationItem->save();
 
-        return redirect()->route('soda.navigation.edit', $id)->with('success', 'Navigation item saved successfully');
+        return redirect()->route('soda.navigation.edit', $navigationItem->id)->with('success', 'Navigation item saved successfully');
     }
 
     public function delete($id)

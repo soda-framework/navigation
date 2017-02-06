@@ -6,6 +6,7 @@ use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvi
 use Illuminate\Support\Facades\Route;
 use Soda\Navigation\Console\Migrate;
 use Soda\Navigation\Console\Seed;
+use Soda\Navigation\Models\NavigationItem;
 
 class SodaNavigationServiceProvider extends ServiceProvider
 {
@@ -46,6 +47,8 @@ class SodaNavigationServiceProvider extends ServiceProvider
                 'permissions' => 'manage-navigation',
             ]);
         });
+
+        app('soda.page')->registerDraftable(NavigationItem::class);
     }
 
     /**
