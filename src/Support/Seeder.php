@@ -2,8 +2,8 @@
 
 namespace Soda\Navigation\Support;
 
-use Soda\Cms\Models\Role;
-use Soda\Cms\Models\Permission;
+use Soda\Cms\Database\Models\Role;
+use Soda\Cms\Database\Models\Permission;
 
 use Illuminate\Database\Seeder as BaseSeeder;
 
