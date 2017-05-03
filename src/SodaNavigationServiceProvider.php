@@ -48,7 +48,7 @@ class SodaNavigationServiceProvider extends ServiceProvider
             ]);
         });
 
-        app('soda.page')->registerDraftable(NavigationItem::class);
+        app('soda.drafting')->registerDraftable([NavigationItem::class]);
     }
 
     /**

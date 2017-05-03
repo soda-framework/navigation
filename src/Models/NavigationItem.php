@@ -2,17 +2,17 @@
 
 namespace Soda\Navigation\Models;
 
-use Soda\Cms\Models\Page;
+use Soda\Cms\Database\Models\Page;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Request;
-use Soda\Cms\Models\Traits\DraftableTrait;
+use Soda\Cms\Database\Models\Traits\Draftable;
 use Soda\Navigation\Models\Traits\Treeable;
-use Soda\Cms\Models\Traits\PositionableTrait;
-use Soda\Cms\Models\Traits\OptionallyInApplicationTrait;
+use Soda\Cms\Database\Models\Traits\Positionable;
+use Soda\Cms\Database\Models\Traits\OptionallyBoundToApplication;
 
 class NavigationItem extends Model
 {
-    use OptionallyInApplicationTrait, PositionableTrait, DraftableTrait, Treeable;
+    use OptionallyBoundToApplication, Positionable, Draftable, Treeable;
 
     protected $table = 'navigation_items';
 
