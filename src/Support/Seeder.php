@@ -22,16 +22,12 @@ class Seeder extends BaseSeeder
             'description'                => 'View, edit and delete navigation items.',
         ]);
 
-        $adminRole = Role::where('name', 'admin')->first();
-
-        if ($adminRole) {
-            $adminRole->attachPermission($permissionManageNavigation);
+        if ($developerRole = Role::where('name', 'developer')->first()) {
+            $developerRole->attachPermission($permissionManageNavigation);
         }
 
-        $developerRole = Role::where('name', 'developer')->first();
-
-        if ($developerRole) {
-            $developerRole->attachPermission($permissionManageNavigation);
+        if ($adminRole = Role::where('name', 'admin')->first()) {
+            $adminRole->attachPermission($permissionManageNavigation);
         }
     }
 }
