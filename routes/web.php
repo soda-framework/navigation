@@ -3,7 +3,6 @@
 Route::group([
     'prefix'     => config('soda.cms.path').'/navigation',
     'middleware' => [
-        'soda.main',
         'soda.auth',
         'soda.permission:manage-navigation',
     ],

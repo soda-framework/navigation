@@ -8,6 +8,11 @@ use Soda\Navigation\Models\NavigationItem;
 
 class NavigationController extends Controller
 {
+    public function __construct() {
+        app('soda.interface')->setHeading('Navigation')->setHeadingIcon('fa fa-compass');
+        app('soda.interface')->breadcrumbs()->addLink(route('soda.home'), 'Home');
+    }
+
     public function index(Request $request)
     {
         $treeItems = NavigationItem::get()->toTree();
@@ -17,6 +22,9 @@ class NavigationController extends Controller
 
     public function create($parentId = null)
     {
+        app('soda.interface')->breadcrumbs()->addLink(route('soda.navigation'), 'Navigation');
+        app('soda.interface')->setHeading('New Navigation Item');
+
         $navigationItem = new NavigationItem([
             'slug_type' => 'url',
             'parent_id' => $parentId,
@@ -27,7 +35,10 @@ class NavigationController extends Controller
 
     public function edit($id)
     {
-        $navigationItem = NavigationItem::find($id);
+        $navigationItem = NavigationItem::findOrFail($id);
+
+        app('soda.interface')->breadcrumbs()->addLink(route('soda.navigation'), 'Navigation');
+        app('soda.interface')->setHeading('Editing Navigation Item');
 
         return view('soda-navigation::view', compact('navigationItem'));
     }
