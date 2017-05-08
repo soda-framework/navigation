@@ -6,7 +6,6 @@ use Soda\Cms\Database\Models\Page;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Request;
 use Soda\Cms\Database\Models\Traits\Draftable;
-use Soda\Cms\Database\Models\Traits\Sortable;
 use Soda\Navigation\Models\Traits\Treeable;
 use Soda\Cms\Database\Models\Traits\OptionallyBoundToApplication;
 
