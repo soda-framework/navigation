@@ -32,7 +32,7 @@
             <input type="hidden" name="parent_id" value="{{ $navigationItem->parent_id }}" />
             @endif
 
-            {!! SodaForm::text([
+            {!! app('soda.form')->text([
                 "name"        => "Name",
                 "description" => "The name of this menu item",
                 "field_name"  => 'name',
@@ -40,17 +40,17 @@
 
             <input type="hidden" name="slug_type" value="{{ $navigationItem->slug_type ?: \Soda\Navigation\Models\NavigationItem::SLUG_TYPE_URL }}" />
 
-            {!! SodaForm::text([
+            {!! app('soda.form')->text([
                 'name'        => 'URL',
                 'description' => 'The url this menu item should link to',
                 'field_name'  => 'slug_value',
             ])->setModel($navigationItem) !!}
 
-            {!! SodaForm::toggle([
+            {!! app('soda.form')->toggle([
                 'name'         => 'Published',
                 'field_name'   => 'status',
-                'value'        => Soda\Cms\Support\Constants::STATUS_LIVE,
-                'field_params' => ['checked-value' => Soda\Cms\Support\Constants::STATUS_LIVE, 'unchecked-value' => Soda\Cms\Support\Constants::STATUS_DRAFT],
+                'value'        => Soda\Cms\Foundation\Constants::STATUS_LIVE,
+                'field_params' => ['checked-value' => Soda\Cms\Foundation\Constants::STATUS_LIVE, 'unchecked-value' => Soda\Cms\Foundation\Constants::STATUS_DRAFT],
             ])->setModel($navigationItem) !!}
         </form>
     </div>

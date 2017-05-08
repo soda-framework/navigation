@@ -22,7 +22,7 @@ class NavigationController extends Controller
 
     public function create($parentId = null)
     {
-        app('soda.interface')->breadcrumbs()->addLink(route('soda.navigation'), 'Navigation');
+        app('soda.interface')->breadcrumbs()->addLink(route('soda.navigation.index'), 'Navigation');
         app('soda.interface')->setHeading('New Navigation Item');
 
         $navigationItem = new NavigationItem([
