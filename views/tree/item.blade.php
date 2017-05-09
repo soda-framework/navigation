@@ -5,7 +5,7 @@
             <img src="/soda/cms/img/drag-dots.gif" />
         </span>
         <span class="item-status">
-            <span class="{{ $treeItem->status == \Soda\Cms\Support\Constants::STATUS_DRAFT ? 'inactive' : 'active' }}-circle"></span>
+            <span class="{{ $treeItem->status == Soda\Cms\Foundation\Constants::STATUS_DRAFT ? 'inactive' : 'active' }}-circle"></span>
         </span>
         <a class="item-title" href="{{ route('soda.navigation.edit', ['id' => $treeItem->id]) }}">
             <span>{{ $treeItem->name }}</span>

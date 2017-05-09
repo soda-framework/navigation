@@ -4,6 +4,7 @@ Route::group([
     'prefix'     => config('soda.cms.path').'/navigation',
     'middleware' => [
         'soda.auth',
+        'soda.web',
         'soda.permission:manage-navigation',
     ],
 ], function () {

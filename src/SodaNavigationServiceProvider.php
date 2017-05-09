@@ -32,7 +32,6 @@ class SodaNavigationServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        parent::boot();
 
         $this->loadViewsFrom(__DIR__.'/../views', 'soda-navigation');
         $this->loadMigrationsFrom(__DIR__.'/../migrations');
@@ -47,7 +46,8 @@ class SodaNavigationServiceProvider extends ServiceProvider
             ]);
         });
 
-        app('soda.drafting')->registerDraftable([NavigationItem::class]);
+        app('soda.drafting')->registerDraftable(NavigationItem::class);
+        parent::boot();
     }
 
     /**
