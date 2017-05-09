@@ -2,7 +2,7 @@
 
 namespace Soda\Navigation\Support;
 
-use Franzose\ClosureTable\Models\Entity;
+use Soda\ClosureTable\Models\Entity;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 
 /**

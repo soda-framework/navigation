@@ -211,7 +211,7 @@ trait Treeable
      *
      * @param array $columns
      *
-     * @return \Franzose\ClosureTable\Extensions\Collection
+     * @return \Soda\ClosureTable\Extensions\Collection
      */
     public function getChildren(array $columns = ['*'])
     {

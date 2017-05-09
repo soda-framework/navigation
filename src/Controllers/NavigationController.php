@@ -8,7 +8,8 @@ use Soda\Navigation\Models\NavigationItem;
 
 class NavigationController extends Controller
 {
-    public function __construct() {
+    public function __construct()
+    {
         app('soda.interface')->setHeading('Navigation')->setHeadingIcon('fa fa-compass');
         app('soda.interface')->breadcrumbs()->addLink(route('soda.home'), 'Home');
     }
