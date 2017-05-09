@@ -6,15 +6,12 @@ use Soda\Cms\Database\Models\Page;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Request;
 use Soda\Navigation\Models\Traits\Treeable;
-use Soda\Cms\Database\Models\Traits\Sortable;
 use Soda\Cms\Database\Models\Traits\Draftable;
 use Soda\Cms\Database\Models\Traits\OptionallyBoundToApplication;
 
 class NavigationItem extends Model
 {
-    use OptionallyBoundToApplication, Sortable, Draftable, Treeable {
-        Treeable::siblings insteadof Sortable;
-    }
+    use OptionallyBoundToApplication, Draftable, Treeable;
 
     protected $table = 'navigation_items';
 
