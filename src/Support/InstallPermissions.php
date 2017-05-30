@@ -22,12 +22,10 @@ class InstallPermissions extends BaseSeeder
             'description'                => 'View, edit and delete navigation items.',
         ]);
 
-        if ($developerRole = Role::where('name', 'developer')->first()) {
-            $developerRole->attachPermission($permissionManageNavigation);
-        }
-
-        if ($adminRole = Role::where('name', 'admin')->first()) {
-            $adminRole->attachPermission($permissionManageNavigation);
+        foreach(['developer', 'super-admin', 'admin'] as $roleName) {
+            if ($role = Role::where('name', $roleName)->first()) {
+                $role->attachPermission($permissionManageNavigation);
+            }
         }
     }
 }
