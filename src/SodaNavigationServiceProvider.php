@@ -46,6 +46,7 @@ class SodaNavigationServiceProvider extends ServiceProvider
             ]);
         });
 
+        $this->app['config']->set('soda.sortable.entities.navigation', NavigationItem::class);
         app('soda.drafting')->registerDraftable(NavigationItem::class);
         parent::boot();
     }

@@ -4,10 +4,13 @@ namespace Soda\Navigation\Models\Traits;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use Soda\Cms\Database\Models\Traits\Sortable;
 use Soda\Navigation\Support\NavigationItemCollection;
 
 trait Treeable
 {
+    use Sortable;
+
     /**
      * Cached "previous" (i.e. before the model is moved) direct ancestor id of this model.
      *
